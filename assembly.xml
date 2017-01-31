@@ -1,0 +1,35 @@
+<assembly
+	xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">	<id>${assemblyId}</id>
+	<formats>
+		<format>tar.bz2</format>
+		<format>tar.gz</format>
+		<format>zip</format>
+	</formats>
+	<baseDirectory>${project.build.finalName}</baseDirectory>
+	<fileSets>
+		<!-- Include license, release notes and readme files -->
+		<fileSet>
+			<directory>${project.basedir}</directory>
+			<outputDirectory/>
+			<includes>
+				<include>README*</include>
+				<include>LICENSE*</include>
+				<include>NOTICE*</include>
+				<include>release_notes*</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+	<dependencySets>
+		<!-- Include the Firmware Fragmenter jar -->
+		<dependencySet>
+			<includes>
+				<include>com.digi.connector:FirmwareFragmenter:jar:*</include>
+			</includes>
+			<outputDirectory/>
+			<useProjectArtifact>true</useProjectArtifact>
+			<scope>runtime</scope>
+		</dependencySet>
+	</dependencySets>
+</assembly>
